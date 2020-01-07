@@ -56,13 +56,13 @@ class App extends React.Component {
   };
 
   serviceKeyHandler = (event) => {
-    const operation = event.target.name;
-    const { first_number, second_number } = this.state;
+    const service = event.target.name;
+    const { first_number, second_number, operation } = this.state;
 
-    switch (operation) {
+    switch (service) {
       case "c":
         this.setState(() => ({ ...this.INITIAL_STATE }));
-        console.log("clear");
+        console.log("cleared");
         break;
 
       case "s":
@@ -83,14 +83,23 @@ class App extends React.Component {
 
       case "%":
         if (second_number) {
+          const value = (first_number / 100) * second_number;
+          this.setState({ second_number: value });
         } else {
+          if (first_number !== "0" && !operation) {
+            const value = first_number / 100;
+            this.setState({ first_number: value });
+          }
         }
+
         break;
 
       default:
         break;
     }
   };
+
+  percentage(number) {}
 
   calculate = () => {
     const has_second_number = this.state.second_number !== "";
