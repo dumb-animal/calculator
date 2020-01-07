@@ -32,7 +32,7 @@ class App extends React.Component {
   };
 
   updateNumber(number, symbol) {
-    const has_point = number.indexOf(".") !== -1 ? true : false;
+    const has_point = number.indexOf(".") > -1 ? true : false;
     const has_zero = number === "0";
 
     const is_point = symbol === ".";
@@ -41,7 +41,7 @@ class App extends React.Component {
     if (has_point && is_point) return number;
     if (has_zero && is_zero) return number;
     if (has_zero && !is_point) return symbol;
-    if (!has_zero && is_point) return "0.";
+    if (has_zero && is_point) return "0.";
 
     return number + symbol;
   }
@@ -99,7 +99,6 @@ class App extends React.Component {
     }
   };
 
-  percentage(number) {}
 
   calculate = () => {
     const has_second_number = this.state.second_number !== "";
