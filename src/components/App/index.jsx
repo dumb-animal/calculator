@@ -99,7 +99,6 @@ class App extends React.Component {
     }
   };
 
-
   calculate = () => {
     const has_second_number = this.state.second_number !== "";
     const has_operation = this.state.operation !== "";
@@ -138,10 +137,11 @@ class App extends React.Component {
     }
 
     value = Math.floor(value) === Math.ceil(value) ? value : value.toFixed(3);
+    value = value.toString();
 
     this.setState({
       ...this.INITIAL_STATE,
-      first_number: value.toString(),
+      first_number: value,
       prev: { number: second_number, operation }
     });
   };
