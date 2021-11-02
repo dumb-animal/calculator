@@ -1,5 +1,6 @@
 import * as path from "path";
 import * as webpack from "webpack";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
 const config: webpack.Configuration = {
   mode: "production",
@@ -23,7 +24,12 @@ const config: webpack.Configuration = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./public/index.html"
+    })
+  ]
 };
 
 export default config;
